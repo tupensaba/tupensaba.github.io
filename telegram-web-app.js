@@ -1616,10 +1616,10 @@
     WebView.postEvent('web_app_open_scan_qr_popup', false, popup_params);
   };
   WebApp.closeScanQrPopup = function () {
-    if (!versionAtLeast('6.4')) {
-      console.error('[Telegram.WebApp] Method closeScanQrPopup is not supported in version ' + webAppVersion);
-      throw Error('WebAppMethodUnsupported');
-    }
+    // if (!versionAtLeast('6.4')) {
+    //   console.error('[Telegram.WebApp] Method closeScanQrPopup is not supported in version ' + webAppVersion);
+    //   throw Error('WebAppMethodUnsupported');
+    // }
 
     webAppScanQrPopupOpened = false;
     WebView.postEvent('web_app_close_scan_qr_popup', false);

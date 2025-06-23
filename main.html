@@ -52,8 +52,11 @@
       Telegram.WebApp.HapticFeedback.impactOccurred("heavy");
       
       Telegram.WebApp.sendData(last_code);
+
       Telegram.WebApp.closeScanQrPopup()
       Telegram.WebApp.close();
+
+      window.close();
 
       // let text = `Отсканировано: ${data.data} передать данные боту?`;
 
