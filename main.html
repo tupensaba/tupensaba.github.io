@@ -53,18 +53,21 @@
       
       let text = `Отсканировано: ${data.data} передать данные боту?`;
 
-          Telegram.WebApp.showConfirm(text,(res)=>{
+          Telegram.WebApp.showConfirm(text,onShowConfirmClose)
+    }
+
+    function onShowConfirmClose(res){
 
             if(res)
             {
-              Telegram.WebApp.sendData(data.data);
+              Telegram.WebApp.sendData(last_code);
               // Telegram.WebApp.closeScanQrPopup()
               // Telegram.WebApp.close()
             }
             else{
               Telegram.WebApp.showPopup(res)
             }
-            })
-    }
+            }
+
 
 </script>
