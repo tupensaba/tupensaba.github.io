@@ -29,6 +29,9 @@
 
       Telegram.WebApp.onEvent('qrTextReceived', processQRCode);
 
+      Telegram.WebApp.onEvent('', processQRCode);
+
+      
       Telegram.WebApp.showScanQrPopup(par)
 
     })
@@ -57,6 +60,9 @@
               Telegram.WebApp.sendData(data.data);
               // Telegram.WebApp.closeScanQrPopup()
               // Telegram.WebApp.close()
+            }
+            else{
+              Telegram.WebApp.showPopup(res)
             }
             })
     }
