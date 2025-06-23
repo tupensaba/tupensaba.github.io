@@ -29,7 +29,7 @@
 
       Telegram.WebApp.onEvent('qrTextReceived', processQRCode);
 
-      Telegram.WebApp.onEvent('', processQRCode);
+      Telegram.WebApp.onEvent('popup_closed', onShowConfirmClose);
 
       
       Telegram.WebApp.showScanQrPopup(par)
@@ -58,7 +58,7 @@
 
     function onShowConfirmClose(res){
 
-            if(res)
+            if(res == 'ok')
             {
               Telegram.WebApp.sendData(last_code);
               // Telegram.WebApp.closeScanQrPopup()
