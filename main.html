@@ -29,7 +29,7 @@
 
       Telegram.WebApp.onEvent('qrTextReceived', processQRCode);
 
-      Telegram.WebApp.onEvent('popupClosed', onShowConfirmClose);
+      // Telegram.WebApp.onEvent('popupClosed', onShowConfirmClose);
 
       
       Telegram.WebApp.showScanQrPopup(par)
@@ -51,23 +51,25 @@
       Telegram.WebApp.HapticFeedback.impactOccurred("rigid");
       Telegram.WebApp.HapticFeedback.impactOccurred("heavy");
       
-      let text = `Отсканировано: ${data.data} передать данные боту?`;
+      Telegram.WebApp.sendData(last_code);
 
-          Telegram.WebApp.showConfirm(text,onShowConfirmClose)
+      // let text = `Отсканировано: ${data.data} передать данные боту?`;
+
+      //     Telegram.WebApp.showConfirm(text,onShowConfirmClose)
     }
 
-    function onShowConfirmClose(res){
+    // function onShowConfirmClose(res){
 
-            if(res == 'ok')
-            {
-              Telegram.WebApp.sendData(last_code);
-              // Telegram.WebApp.closeScanQrPopup()
-              // Telegram.WebApp.close()
-            }
-            else{
-              Telegram.WebApp.showPopup(res)
-            }
-            }
+    //         if(res == 'ok')
+    //         {
+              
+    //           // Telegram.WebApp.closeScanQrPopup()
+    //           // Telegram.WebApp.close()
+    //         }
+    //         else{
+    //           Telegram.WebApp.showPopup(res)
+    //         }
+    //         }
 
 
 </script>
