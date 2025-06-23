@@ -18,39 +18,46 @@
 </body>
 </html>
 <script>
+
+    let last_code = null;
+
      $(document).ready(() => {
       
          let par = {
           text: ""
         };
 
-      Telegram.WebApp.showScanQrPopup(par,(event)=>{
+      Telegram.WebApp.onEvent('qrTextReceived', processQRCode);
 
-        Telegram.WebApp.showAlert("sos")
-
-      // if(event !== undefined)
-      // {
-      //   let scannedText = event.data;
-
-      //   let text = `Отсканировано: ${scannedText} передать данные боту?`;
-
-      //     Telegram.WebApp.showConfirm(scannedText,(button_id)=>{
-
-      //       if(button_id == 'ok')
-      //       {
-      //       Telegram.WebApp.closeScanQrPopup()
-      //       Telegram.WebApp.close()
-      //       }
-      //       })
-
-
-      // }
-      // else{
-      //     return false;
-      // }
-        
-
-      })
+      Telegram.WebApp.showScanQrPopup(par)
 
     })
+    
+    function processQRCode(data) {
+      // This function is called every time the scanner recognise a QR code
+      // check if the QR code text is longer than 4096 characters
+      if (data.data.length > 4096) {
+        Telegram.WebApp.showAlert('Error cannot store QR codes longer than 4096 characters');
+        return;
+      }
+      // avoids to scan the same code twice in continuous scan mode
+      if (data.data == last_code) {
+        return;
+      }
+      last_code = data.data;
+      Telegram.WebApp.HapticFeedback.impactOccurred("rigid");
+      Telegram.WebApp.HapticFeedback.impactOccurred("heavy");
+      
+      let text = `Отсканировано: ${data.data} передать данные боту?`;
+
+          Telegram.WebApp.showConfirm(data.data,(button_id)=>{
+
+            if(button_id == 'ok')
+            {
+            Telegram.WebApp.closeScanQrPopup()
+            Telegram.WebApp.close()
+            }
+            })
+    }
+
 </script>
