@@ -26,11 +26,16 @@
 
       Telegram.WebApp.showScanQrPopup(par,(event)=>{
 
-        let scannedText = event.data;
+        let scannedText = event.eventData.data;
 
-         Telegram.WebApp.showConfirm(`Отсканировано: ${scannedText} передать данные боту?`,(e)=>{
+         Telegram.WebApp.showConfirm(`Отсканировано: ${scannedText} передать данные боту?`,(button_id)=>{
 
+            if(button_id == 'ok')
+            {
             Telegram.WebApp.closeScanQrPopup()
+            Telegram.WebApp.close()
+            }
+            
 
          })
 
