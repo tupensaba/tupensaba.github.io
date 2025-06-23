@@ -23,8 +23,20 @@
          let par = {
           text: ""
         };
-        
-      Telegram.WebApp.showScanQrPopup(par)
+
+      Telegram.WebApp.showScanQrPopup(par,(event)=>{
+
+        let scannedText = event.data;
+
+         Telegram.WebApp.showConfirm(`Отсканировано: ${scannedText} передать данные боту?`,(e)=>{
+
+            Telegram.WebApp.closeScanQrPopup()
+
+         })
+
+      })
 
     })
+
+    Telegram.WebApp.messages.sendWebViewResultMessage
 </script>
