@@ -32,7 +32,7 @@
       Telegram.WebApp.showScanQrPopup(par)
 
     })
-    
+
     function processQRCode(data) {
       // This function is called every time the scanner recognise a QR code
       // check if the QR code text is longer than 4096 characters
@@ -50,12 +50,12 @@
       
       let text = `Отсканировано: ${data.data} передать данные боту?`;
 
-          Telegram.WebApp.showConfirm(data.data,(button_id)=>{
+          Telegram.WebApp.showConfirm(data.data,(res)=>{
 
-            if(button_id == 'ok')
+            if(res)
             {
-            Telegram.WebApp.closeScanQrPopup()
-            Telegram.WebApp.close()
+              Telegram.WebApp.closeScanQrPopup()
+              Telegram.WebApp.close()
             }
             })
     }
