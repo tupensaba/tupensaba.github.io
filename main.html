@@ -26,26 +26,28 @@
 
       Telegram.WebApp.showScanQrPopup(par,(event)=>{
 
-      if(event !== undefined)
-      {
-        let scannedText = event.data;
+        showAlert(event)
 
-        let text = `Отсканировано: ${scannedText} передать данные боту?`;
+      // if(event !== undefined)
+      // {
+      //   let scannedText = event.data;
 
-          Telegram.WebApp.showConfirm(scannedText,(button_id)=>{
+      //   let text = `Отсканировано: ${scannedText} передать данные боту?`;
 
-            if(button_id == 'ok')
-            {
-            Telegram.WebApp.closeScanQrPopup()
-            Telegram.WebApp.close()
-            }
-            })
+      //     Telegram.WebApp.showConfirm(scannedText,(button_id)=>{
+
+      //       if(button_id == 'ok')
+      //       {
+      //       Telegram.WebApp.closeScanQrPopup()
+      //       Telegram.WebApp.close()
+      //       }
+      //       })
 
 
-      }
-      else{
-          return false;
-      }
+      // }
+      // else{
+      //     return false;
+      // }
         
 
       })
